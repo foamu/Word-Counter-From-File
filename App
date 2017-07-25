@@ -1,0 +1,33 @@
+package wordcounter;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class App {
+
+	public static void main(String[] args) {
+		
+		File file = new File("C:\\Users\\Wolffe\\workspace\\Practice\\src\\wordcounter\\text");
+		
+		try (FileReader fr = new FileReader(file)) {
+			
+			BufferedReader br = new BufferedReader(fr);
+			String line = br.readLine();
+			String[] wordArray = line.trim().split("\\s+");
+			int wordCount = wordArray.length;
+			
+			System.out.println(line);
+			System.out.println("Number of words contained in the string: " + wordCount);
+			
+		} catch (FileNotFoundException e) {
+			System.err.println("File not found.");
+		} catch (IOException f) {
+			System.err.println("Input/Ouput Exception");
+		}
+		
+	}
+	
+}
